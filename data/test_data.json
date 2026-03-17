@@ -1,0 +1,20 @@
+[
+    {
+        "test_name": "Nike Shoes Search",
+        "search_query": "nike shoes",
+        "item_limit": 1,
+        "budget_per_item": 220.0
+    },
+    {
+        "test_name": "Keyboard Search",
+        "search_query": "keyboard",
+        "item_limit": 2,
+        "budget_per_item": 100.0
+    },
+    {
+        "test_name": "Mouse Search",
+        "search_query": "mouse",
+        "item_limit": 3,
+        "budget_per_item": 50.0
+    }
+]

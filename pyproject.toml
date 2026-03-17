@@ -1,0 +1,31 @@
+[project]
+name = "ecommerce_automation"
+version = "0.1.0"
+description = "eCommerce Test Automation Project (Python + Playwright)"
+requires-python = ">=3.14"
+dependencies = [
+    "playwright",
+    "pytest",
+    "pytest-asyncio",
+    "pytest-xdist",
+    "pytest-rerunfailures",
+    "allure-pytest",
+    "pyyaml",
+    "pytest-html",
+    "pytest-timeout",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = "."
+addopts = "--alluredir=results/allure-results -n auto --html=results/report.html --self-contained-html"
+# addopts = "--alluredir=results/allure-results --html=results/report.html --self-contained-html"
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+timeout = 300
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
