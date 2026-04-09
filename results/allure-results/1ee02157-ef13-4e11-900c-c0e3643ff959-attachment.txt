@@ -1,0 +1,110 @@
+[32mINFO    [0m tests.test_ecommerce:test_ecommerce.py:50 Starting Scenario: Keyboard Search
+[32mINFO    [0m HomePage:base_page.py:30 Navigating to https://www.ebay.com
+[32mINFO    [0m HomePage:base_page.py:23 Global Header Search: keyboard
+[32mINFO    [0m utils.locator_utility:locator_utility.py:186 Visual checkpoint captured for 'Search Input': D:\repos\ecommerce_automation\results\chrome_latest-Keyboard_Search\screenshots\20260409160911368313.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:230 SUCCESS: Found 'Search Input' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:280 Filled 'Search Input' with value: keyboard
+[32mINFO    [0m utils.locator_utility:locator_utility.py:186 Visual checkpoint captured for 'Search Button': D:\repos\ecommerce_automation\results\chrome_latest-Keyboard_Search\screenshots\20260409160912180416.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:230 SUCCESS: Found 'Search Button' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:264 Clicked 'Search Button'
+[32mINFO    [0m SearchResultsPage:search_results_page.py:132 Searching for 'keyboard' under ILS 100.0 (Limit: 2)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:186 Visual checkpoint captured for 'Buy It Now Filter': D:\repos\ecommerce_automation\results\chrome_latest-Keyboard_Search\screenshots\20260409160915577600.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:230 SUCCESS: Found 'Buy It Now Filter' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:264 Clicked 'Buy It Now Filter'
+[32mINFO    [0m utils.locator_utility:locator_utility.py:186 Visual checkpoint captured for 'Max Price Filter': D:\repos\ecommerce_automation\results\chrome_latest-Keyboard_Search\screenshots\20260409160920133186.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:230 SUCCESS: Found 'Max Price Filter' (Attempt 1/8)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:273 Performing 8 manual clear actions for 'Max Price Filter'
+[32mINFO    [0m utils.locator_utility:locator_utility.py:280 Filled 'Max Price Filter' with value: 100
+[32mINFO    [0m SearchResultsPage:search_results_page.py:85 Verifying applied filter: 100.0
+[32mINFO    [0m utils.locator_utility:locator_utility.py:186 Visual checkpoint captured for 'Applied Filter Chip': D:\repos\ecommerce_automation\results\chrome_latest-Keyboard_Search\screenshots\20260409160922996567.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:230 SUCCESS: Found 'Applied Filter Chip' (Attempt 1/5)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Filter Chip Price' not detected after all attempts.
+[32mINFO    [0m SearchResultsPage:search_results_page.py:110 Filter verified: 100.0
+[32mINFO    [0m SearchResultsPage:search_results_page.py:153 Scanning Page 1...
+[32mINFO    [0m utils.locator_utility:locator_utility.py:186 Visual checkpoint captured for 'Results Area P1': D:\repos\ecommerce_automation\results\chrome_latest-Keyboard_Search\screenshots\20260409160923922670.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:230 SUCCESS: Found 'Results Area P1' (Attempt 1/3)
+[32mINFO    [0m SearchResultsPage:search_results_page.py:164 Found 653 potential cards. Scanning first 50...
+[32mINFO    [0m SearchResultsPage:search_results_page.py:196 QUALIFIED: Item 1 | Price: 71.04 | US Replacement Keyboard Keycaps, Full Se...
+[32mINFO    [0m SearchResultsPage:search_results_page.py:196 QUALIFIED: Item 2 | Price: 10.51 | 18x18mm PBT Red Blank Keycap ESC R4 Keyc...
+[32mINFO    [0m ProductPage:product_page.py:189 Opening item page: https://www.ebay.com/itm/275943522394
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Already in Cart Indicator (a[data-testid='ux-call-to-action'] span:has-text('See in cart'))' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Already in Cart Indicator (//a[contains(., 'See in cart')])' not detected after all attempts.
+[32mINFO    [0m ProductPage:product_page.py:48 Scanning for required product variants...
+[32mINFO    [0m ProductPage:product_page.py:163 Adding item to cart (Attempt 1)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:186 Visual checkpoint captured for 'Add to Cart Button': D:\repos\ecommerce_automation\results\chrome_latest-Keyboard_Search\screenshots\20260409160930653361.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:230 SUCCESS: Found 'Add to Cart Button' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:264 Clicked 'Add to Cart Button'
+[32mINFO    [0m utils.locator_utility:locator_utility.py:186 Visual checkpoint captured for 'Confirmation': D:\repos\ecommerce_automation\results\chrome_latest-Keyboard_Search\screenshots\20260409160933118310.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:230 SUCCESS: Found 'Confirmation' (Attempt 1/3)
+[32mINFO    [0m ProductPage:product_page.py:171 Verification Success: Item added to cart.
+[32mINFO    [0m ProductPage:product_page.py:209 Successfully added to cart and synced session for: https://www.ebay.com/itm/275943522394
+[32mINFO    [0m ProductPage:product_page.py:189 Opening item page: https://www.ebay.com/itm/357998918232
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Already in Cart Indicator (a[data-testid='ux-call-to-action'] span:has-text('See in cart'))' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Already in Cart Indicator (//a[contains(., 'See in cart')])' not detected after all attempts.
+[32mINFO    [0m ProductPage:product_page.py:48 Scanning for required product variants...
+[32mINFO    [0m ProductPage:product_page.py:163 Adding item to cart (Attempt 1)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:186 Visual checkpoint captured for 'Add to Cart Button': D:\repos\ecommerce_automation\results\chrome_latest-Keyboard_Search\screenshots\20260409160951228188.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:230 SUCCESS: Found 'Add to Cart Button' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:264 Clicked 'Add to Cart Button'
+[32mINFO    [0m utils.locator_utility:locator_utility.py:186 Visual checkpoint captured for 'Confirmation': D:\repos\ecommerce_automation\results\chrome_latest-Keyboard_Search\screenshots\20260409160953698574.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:230 SUCCESS: Found 'Confirmation' (Attempt 1/3)
+[32mINFO    [0m ProductPage:product_page.py:171 Verification Success: Item added to cart.
+[32mINFO    [0m ProductPage:product_page.py:209 Successfully added to cart and synced session for: https://www.ebay.com/itm/357998918232
+[32mINFO    [0m CartPage:base_page.py:30 Navigating to https://cart.ebay.com
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Indicator 'text='Please verify you are a human''' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Indicator 'text='Security Check''' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:230 SUCCESS: Found 'Captcha Indicator 'iframe[src*='captcha']'' (Attempt 1/1)
+[33mWARNING [0m utils.locator_utility:locator_utility.py:72 CAPTCHA DETECTED using indicator: iframe[src*='captcha']
+[32mINFO    [0m utils.locator_utility:locator_utility.py:186 Visual checkpoint captured for 'Captcha Challenge': D:\repos\ecommerce_automation\results\chrome_latest-Keyboard_Search\screenshots\20260409160958552569.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox 'input[type='checkbox']'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox '#checkbox'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox '#anchor-checkbox'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox '.recaptcha-checkbox-border'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox '[aria-checked='false']'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox 'div[role='checkbox']'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox 'input[type='checkbox']'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox '#checkbox'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox '#anchor-checkbox'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox '.recaptcha-checkbox-border'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox '[aria-checked='false']'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox 'div[role='checkbox']'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox 'input[type='checkbox']'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:230 SUCCESS: Found 'Captcha Checkbox '#checkbox'' (Attempt 1/1)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:108 Attempting to click CAPTCHA checkbox (#checkbox) in frame: https://newassets.hcaptcha.com...
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox 'input[type='checkbox']'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox '#checkbox'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox '#anchor-checkbox'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox '.recaptcha-checkbox-border'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox '[aria-checked='false']'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Checkbox 'div[role='checkbox']'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Verify Button 'button:has-text('Verify')'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Verify Button '#verify-button'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Verify Button '.verify-button'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Verify Button 'text='Verify myself''' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Verify Button 'button:has-text('Try again')'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:79 Auto-solve failed or not applicable. Waiting for manual resolution (60s)...
+[32mINFO    [0m utils.locator_utility:locator_utility.py:82 Captcha resolved manually! Proceeding...
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Indicator 'text='Please verify you are a human''' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Indicator 'text='Security Check''' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Indicator 'iframe[src*='captcha']'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Indicator 'text='verify you\'re not a robot''' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Indicator 'id='captcha-container''' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Indicator 'text='Verify it\'s you''' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Indicator 'button:has-text('Verify')'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:186 Visual checkpoint captured for 'Cart Item Count': D:\repos\ecommerce_automation\results\chrome_latest-Keyboard_Search\screenshots\20260409161015690300.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:230 SUCCESS: Found 'Cart Item Count' (Attempt 1/5)
+[32mINFO    [0m CartPage:cart_page.py:40 Cart count raw text: 'Items (2)
+ILS 81.55'
+[32mINFO    [0m CartPage:cart_page.py:45 Detected 2 item(s) in cart from Order Summary.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Indicator 'text='Please verify you are a human''' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Indicator 'text='Security Check''' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Indicator 'iframe[src*='captcha']'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Indicator 'text='verify you\'re not a robot''' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Indicator 'id='captcha-container''' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Indicator 'text='Verify it\'s you''' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:240 NOTICE: Optional element 'Captcha Indicator 'button:has-text('Verify')'' not detected after all attempts.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:186 Visual checkpoint captured for 'Cart Total Subtotal': D:\repos\ecommerce_automation\results\chrome_latest-Keyboard_Search\screenshots\20260409161017605164.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:230 SUCCESS: Found 'Cart Total Subtotal' (Attempt 1/6)
+[32mINFO    [0m CartPage:cart_page.py:69 Extracted cart total: 81.55
+[32mINFO    [0m CartPage:cart_page.py:93 Cart Verification: Total=81.55, Threshold=200.0 (2 items * ILS 100.0)
+[32mINFO    [0m CartPage:cart_page.py:99 Verification Success: Cart matches expected constraints.

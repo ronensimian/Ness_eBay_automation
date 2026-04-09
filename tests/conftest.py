@@ -8,7 +8,10 @@ import logging
 from playwright.async_api import async_playwright, Page, BrowserContext
 from utils.data_reader import DataReader
 
-RESULTS_DIR = "results"
+from config import settings
+from utils.data_reader import DataReader
+
+RESULTS_DIR = str(settings.RESULTS_DIR)
 ALLURE_RESULTS_DIR = os.path.join(RESULTS_DIR, "allure-results")
 ALLURE_REPORT_DIR = os.path.join(RESULTS_DIR, "allure-report")
 HTML_REPORT = os.path.join(RESULTS_DIR, "report.html")
@@ -20,7 +23,7 @@ os.makedirs(RESULTS_DIR, exist_ok=True)
 os.makedirs(ALLURE_RESULTS_DIR, exist_ok=True)
 
 # Global configuration for browser profiles
-BROWSER_PROFILES_PATH = os.path.join("data", "browser_profiles.yaml")
+BROWSER_PROFILES_PATH = settings.DATA_DIR / "browser_profiles.yaml"
 
 def load_browser_profiles():
     if os.path.exists(BROWSER_PROFILES_PATH):

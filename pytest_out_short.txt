@@ -1,0 +1,339 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.14.3, pytest-9.0.2, pluggy-1.6.0
+rootdir: D:\repos\ecommerce_automation
+configfile: pyproject.toml
+plugins: allure-pytest-2.15.3, asyncio-1.3.0, html-4.2.0, metadata-3.1.1, rerunfailures-16.1, timeout-2.4.0, xdist-3.8.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+timeout: 300.0s
+timeout method: thread
+timeout func_only: False
+created: 12/12 workers
+12 workers [1 item]
+
+scheduling tests via LoadScheduling
+
+tests/test_ecommerce.py::TestECommerceWorkflow::test_ebay_budget_flow[chrome_latest-Nike_Shoes_Search] 
+[gw0] [100%] FAILED tests/test_ecommerce.py::TestECommerceWorkflow::test_ebay_budget_flow[chrome_latest-Nike_Shoes_Search] 
+==================================================
+ALLURE REPORT GENERATION
+==================================================
+WARNING: Allure CLI (Command Line Interface) is not installed on this system.
+   The raw data was saved to 'results/allure-results', but I couldn't build the HTML report.
+   To fix this: 'scoop install allure' or 'choco install allure'.
+==================================================
+
+
+
+================================== FAILURES ===================================
+_ TestECommerceWorkflow.test_ebay_budget_flow[chrome_latest-Nike_Shoes_Search] _
+[gw0] win32 -- Python 3.14.3 D:\repos\ecommerce_automation\venv_314\Scripts\python.exe
+tests\test_ecommerce.py:83: in test_ebay_budget_flow
+    assert urls, f"No products found for '{scenario['search_query']}' within the specified price range."
+E   AssertionError: No products found for 'nike shoes' within the specified price range.
+E   assert []
+---------------------------- Captured stderr setup ----------------------------
+2026-03-19 12:51:26 [INFO] utils.data_reader: Successfully loaded test data from test_data.json
+---------------------------- Captured stderr call -----------------------------
+2026-03-19 12:51:29 [INFO] tests.test_ecommerce: Starting Scenario: Nike Shoes Search
+2026-03-19 12:51:29 [INFO] HomePage: Navigating to https://www.ebay.com
+2026-03-19 12:51:31 [INFO] HomePage: Searching for product: nike shoes
+2026-03-19 12:51:32 [INFO] utils.locator_utility: Visual checkpoint captured for 'Search Input': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125131676232.png
+2026-03-19 12:51:32 [INFO] utils.locator_utility: SUCCESS: Found 'Search Input' (Attempt 1/3)
+2026-03-19 12:51:32 [INFO] utils.locator_utility: Filled 'Search Input' with value: nike shoes
+2026-03-19 12:51:33 [INFO] utils.locator_utility: Visual checkpoint captured for 'Search Button': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125133049766.png
+2026-03-19 12:51:33 [INFO] utils.locator_utility: SUCCESS: Found 'Search Button' (Attempt 1/4)
+2026-03-19 12:51:34 [INFO] utils.locator_utility: Clicked 'Search Button'
+2026-03-19 12:51:34 [INFO] SearchResultsPage: Searching for 'nike shoes' under ILS 220.0 (Limit: 1)
+2026-03-19 12:51:38 [INFO] utils.locator_utility: Visual checkpoint captured for 'Buy It Now Filter': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125137545442.png
+2026-03-19 12:51:39 [INFO] utils.locator_utility: SUCCESS: Found 'Buy It Now Filter' (Attempt 1/3)
+2026-03-19 12:51:40 [WARNING] utils.locator_utility: Initial click failed or intercepted for 'Buy It Now Filter': Locator.click: Timeout 1000ms exceeded.
+Call log:
+  - waiting for locator("a[href*='LH_BIN=1']").first
+    - locator resolved to <a _sp="p2351460.m4118.c1" class="rbx x-refine__single-select-link" href="https://www.ebay.com/sch/i.html?_nkw=nike+shoes&_sacat=0&_from=R40&rt=nc&LH_BIN=1" data-s-ztkj833="{"eventFamily":"LST","eventAction":"ACTN","actionKind":"NAVSRC","actionKinds":["NAVSRC"],"operationId":"2351460","flushImmediately":false,"eventProperty":{"moduledtl":"mi%3A4118%7Ciid%3A1%7Cselected%3A0%7Cglobal%3A1%7CaspectURLParam%3ALH_BIN%7Cli%3A8173%7Cluid%3A191%7C","pageci":"994c17b8-2381-11f1-a805-c6cd1ec5343e","parentrqà>à</a>
+  - attempting click action
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - performing click action
+. Attempting recovery/forced click.
+2026-03-19 12:51:42 [INFO] utils.locator_utility: Visual checkpoint captured for 'Buy It Now Filter': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125142300093.png
+2026-03-19 12:51:43 [INFO] utils.locator_utility: SUCCESS: Found 'Buy It Now Filter' (Attempt 1/3)
+2026-03-19 12:51:43 [INFO] utils.locator_utility: Clicked 'Buy It Now Filter'
+2026-03-19 12:51:48 [WARNING] utils.locator_utility: ATTEMPT 1/8 FAILED for 'Max Price Filter' using: input[aria-label*='Maximum Value']
+2026-03-19 12:51:49 [WARNING] utils.locator_utility: ATTEMPT 2/8 FAILED for 'Max Price Filter' using: input[placeholder*='max']
+2026-03-19 12:51:50 [WARNING] utils.locator_utility: ATTEMPT 3/8 FAILED for 'Max Price Filter' using: .x-search-field__input--max
+2026-03-19 12:51:51 [WARNING] utils.locator_utility: ATTEMPT 4/8 FAILED for 'Max Price Filter' using: input[id*='price_max']
+2026-03-19 12:51:52 [INFO] utils.locator_utility: Visual checkpoint captured for 'Max Price Filter': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125151953110.png
+2026-03-19 12:51:52 [INFO] utils.locator_utility: SUCCESS: Found 'Max Price Filter' (Attempt 5/8)
+2026-03-19 12:51:52 [INFO] utils.locator_utility: Performing 8 manual clear actions for 'Max Price Filter'
+2026-03-19 12:51:53 [INFO] utils.locator_utility: Filled 'Max Price Filter' with value: 220
+2026-03-19 12:51:53 [INFO] SearchResultsPage: Verifying applied filter: 220.0
+2026-03-19 12:51:55 [INFO] utils.locator_utility: Visual checkpoint captured for 'Applied Filter Chip': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125154724935.png
+2026-03-19 12:51:55 [INFO] utils.locator_utility: SUCCESS: Found 'Applied Filter Chip' (Attempt 1/5)
+2026-03-19 12:51:55 [INFO] utils.locator_utility: NOTICE: Optional element 'Filter Chip Price' not detected after all attempts.
+2026-03-19 12:51:55 [INFO] SearchResultsPage: Filter verified: 220.0
+2026-03-19 12:51:55 [INFO] SearchResultsPage: Scanning Page 1...
+2026-03-19 12:51:56 [INFO] utils.locator_utility: Visual checkpoint captured for 'Results Area P1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125156122046.png
+2026-03-19 12:51:56 [INFO] utils.locator_utility: SUCCESS: Found 'Results Area P1' (Attempt 1/3)
+2026-03-19 12:51:57 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Cards on Page 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125157131969.png
+2026-03-19 12:51:57 [INFO] utils.locator_utility: SUCCESS: Found 'Item Cards on Page 1' (Attempt 1/1)
+2026-03-19 12:51:57 [INFO] SearchResultsPage: Found 1 potential cards on page 1.
+2026-03-19 12:51:58 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Card 1 on Page 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125157926324.png
+2026-03-19 12:51:58 [INFO] utils.locator_utility: Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125158664867.png
+2026-03-19 12:51:59 [INFO] utils.locator_utility: Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125159612624.png
+2026-03-19 12:52:00 [INFO] utils.locator_utility: SUCCESS: Found 'Next Page' (Attempt 1/4)
+2026-03-19 12:52:00 [INFO] utils.locator_utility: Clicked 'Next Page'
+2026-03-19 12:52:02 [INFO] SearchResultsPage: Scanning Page 2...
+2026-03-19 12:52:03 [INFO] utils.locator_utility: Visual checkpoint captured for 'Results Area P2': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125202874079.png
+2026-03-19 12:52:03 [INFO] utils.locator_utility: SUCCESS: Found 'Results Area P2' (Attempt 1/3)
+2026-03-19 12:52:04 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Cards on Page 2': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125203864002.png
+2026-03-19 12:52:04 [INFO] utils.locator_utility: SUCCESS: Found 'Item Cards on Page 2' (Attempt 1/1)
+2026-03-19 12:52:04 [INFO] SearchResultsPage: Found 1 potential cards on page 2.
+2026-03-19 12:52:04 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Card 1 on Page 2': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125204606581.png
+2026-03-19 12:52:05 [INFO] utils.locator_utility: Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125205349723.png
+2026-03-19 12:52:06 [INFO] utils.locator_utility: Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125206219553.png
+2026-03-19 12:52:06 [INFO] utils.locator_utility: SUCCESS: Found 'Next Page' (Attempt 1/4)
+2026-03-19 12:52:07 [INFO] utils.locator_utility: Clicked 'Next Page'
+2026-03-19 12:52:08 [INFO] SearchResultsPage: Scanning Page 3...
+2026-03-19 12:52:10 [INFO] utils.locator_utility: Visual checkpoint captured for 'Results Area P3': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125209731036.png
+2026-03-19 12:52:10 [INFO] utils.locator_utility: SUCCESS: Found 'Results Area P3' (Attempt 1/3)
+2026-03-19 12:52:10 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Cards on Page 3': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125210685498.png
+2026-03-19 12:52:11 [INFO] utils.locator_utility: SUCCESS: Found 'Item Cards on Page 3' (Attempt 1/1)
+2026-03-19 12:52:11 [INFO] SearchResultsPage: Found 1 potential cards on page 3.
+2026-03-19 12:52:11 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Card 1 on Page 3': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125211427259.png
+2026-03-19 12:52:12 [INFO] utils.locator_utility: Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125212206960.png
+2026-03-19 12:52:13 [INFO] utils.locator_utility: Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125213107113.png
+2026-03-19 12:52:13 [INFO] utils.locator_utility: SUCCESS: Found 'Next Page' (Attempt 1/4)
+2026-03-19 12:52:14 [INFO] utils.locator_utility: Clicked 'Next Page'
+2026-03-19 12:52:15 [INFO] SearchResultsPage: Scanning Page 4...
+2026-03-19 12:52:16 [INFO] utils.locator_utility: Visual checkpoint captured for 'Results Area P4': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125216258381.png
+2026-03-19 12:52:17 [INFO] utils.locator_utility: SUCCESS: Found 'Results Area P4' (Attempt 1/3)
+2026-03-19 12:52:17 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Cards on Page 4': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125217286620.png
+2026-03-19 12:52:18 [INFO] utils.locator_utility: SUCCESS: Found 'Item Cards on Page 4' (Attempt 1/1)
+2026-03-19 12:52:18 [INFO] SearchResultsPage: Found 1 potential cards on page 4.
+2026-03-19 12:52:18 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Card 1 on Page 4': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125218100740.png
+2026-03-19 12:52:18 [INFO] utils.locator_utility: Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125218827932.png
+2026-03-19 12:52:19 [INFO] utils.locator_utility: Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125219688062.png
+2026-03-19 12:52:20 [INFO] utils.locator_utility: SUCCESS: Found 'Next Page' (Attempt 1/4)
+2026-03-19 12:52:20 [INFO] utils.locator_utility: Clicked 'Next Page'
+2026-03-19 12:52:22 [INFO] SearchResultsPage: Scanning Page 5...
+2026-03-19 12:52:23 [INFO] utils.locator_utility: Visual checkpoint captured for 'Results Area P5': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125223206380.png
+2026-03-19 12:52:24 [INFO] utils.locator_utility: SUCCESS: Found 'Results Area P5' (Attempt 1/3)
+2026-03-19 12:52:24 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Cards on Page 5': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125224145431.png
+2026-03-19 12:52:24 [INFO] utils.locator_utility: SUCCESS: Found 'Item Cards on Page 5' (Attempt 1/1)
+2026-03-19 12:52:24 [INFO] SearchResultsPage: Found 1 potential cards on page 5.
+2026-03-19 12:52:25 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Card 1 on Page 5': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125224888647.png
+2026-03-19 12:52:25 [INFO] utils.locator_utility: Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125225639813.png
+2026-03-19 12:52:26 [INFO] utils.locator_utility: Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125226512353.png
+2026-03-19 12:52:27 [INFO] utils.locator_utility: SUCCESS: Found 'Next Page' (Attempt 1/4)
+2026-03-19 12:52:27 [INFO] utils.locator_utility: Clicked 'Next Page'
+2026-03-19 12:52:29 [INFO] SearchResultsPage: Scanning Page 6...
+2026-03-19 12:52:30 [INFO] utils.locator_utility: Visual checkpoint captured for 'Results Area P6': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125229950881.png
+2026-03-19 12:52:30 [INFO] utils.locator_utility: SUCCESS: Found 'Results Area P6' (Attempt 1/3)
+2026-03-19 12:52:31 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Cards on Page 6': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125231083803.png
+2026-03-19 12:52:31 [INFO] utils.locator_utility: SUCCESS: Found 'Item Cards on Page 6' (Attempt 1/1)
+2026-03-19 12:52:31 [INFO] SearchResultsPage: Found 1 potential cards on page 6.
+2026-03-19 12:52:32 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Card 1 on Page 6': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125231926367.png
+2026-03-19 12:52:32 [INFO] utils.locator_utility: Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125232743263.png
+2026-03-19 12:52:33 [INFO] utils.locator_utility: Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125233621703.png
+2026-03-19 12:52:34 [INFO] utils.locator_utility: SUCCESS: Found 'Next Page' (Attempt 1/4)
+2026-03-19 12:52:35 [INFO] utils.locator_utility: Clicked 'Next Page'
+2026-03-19 12:52:36 [INFO] SearchResultsPage: Scanning Page 7...
+2026-03-19 12:52:37 [INFO] utils.locator_utility: Visual checkpoint captured for 'Results Area P7': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125237270551.png
+2026-03-19 12:52:38 [INFO] utils.locator_utility: SUCCESS: Found 'Results Area P7' (Attempt 1/3)
+2026-03-19 12:52:38 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Cards on Page 7': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125238413754.png
+2026-03-19 12:52:39 [INFO] utils.locator_utility: SUCCESS: Found 'Item Cards on Page 7' (Attempt 1/1)
+2026-03-19 12:52:39 [INFO] SearchResultsPage: Found 1 potential cards on page 7.
+2026-03-19 12:52:39 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Card 1 on Page 7': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125239151466.png
+2026-03-19 12:52:40 [INFO] utils.locator_utility: Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125239909173.png
+2026-03-19 12:52:40 [INFO] utils.locator_utility: Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125240764784.png
+2026-03-19 12:52:41 [INFO] utils.locator_utility: SUCCESS: Found 'Next Page' (Attempt 1/4)
+2026-03-19 12:52:42 [INFO] utils.locator_utility: Clicked 'Next Page'
+2026-03-19 12:52:43 [INFO] SearchResultsPage: Scanning Page 8...
+2026-03-19 12:52:44 [INFO] utils.locator_utility: Visual checkpoint captured for 'Results Area P8': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125244189968.png
+2026-03-19 12:52:45 [INFO] utils.locator_utility: SUCCESS: Found 'Results Area P8' (Attempt 1/3)
+2026-03-19 12:52:45 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Cards on Page 8': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125245352385.png
+2026-03-19 12:52:46 [INFO] utils.locator_utility: SUCCESS: Found 'Item Cards on Page 8' (Attempt 1/1)
+2026-03-19 12:52:46 [INFO] SearchResultsPage: Found 1 potential cards on page 8.
+2026-03-19 12:52:46 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Card 1 on Page 8': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125246117148.png
+2026-03-19 12:52:47 [INFO] utils.locator_utility: Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125246844149.png
+2026-03-19 12:52:47 [INFO] utils.locator_utility: Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125247695281.png
+2026-03-19 12:52:48 [INFO] utils.locator_utility: SUCCESS: Found 'Next Page' (Attempt 1/4)
+2026-03-19 12:52:48 [INFO] utils.locator_utility: Clicked 'Next Page'
+2026-03-19 12:52:50 [INFO] SearchResultsPage: Scanning Page 9...
+2026-03-19 12:52:51 [INFO] utils.locator_utility: Visual checkpoint captured for 'Results Area P9': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125250986421.png
+2026-03-19 12:52:52 [INFO] utils.locator_utility: SUCCESS: Found 'Results Area P9' (Attempt 1/3)
+2026-03-19 12:52:52 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Cards on Page 9': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125252286902.png
+2026-03-19 12:52:52 [INFO] utils.locator_utility: SUCCESS: Found 'Item Cards on Page 9' (Attempt 1/1)
+2026-03-19 12:52:53 [INFO] SearchResultsPage: Found 1 potential cards on page 9.
+2026-03-19 12:52:53 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Card 1 on Page 9': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125253034011.png
+2026-03-19 12:52:54 [INFO] utils.locator_utility: Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125253762642.png
+2026-03-19 12:52:54 [INFO] utils.locator_utility: Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125254763515.png
+2026-03-19 12:52:55 [INFO] utils.locator_utility: SUCCESS: Found 'Next Page' (Attempt 1/4)
+2026-03-19 12:52:56 [INFO] utils.locator_utility: Clicked 'Next Page'
+2026-03-19 12:52:57 [INFO] SearchResultsPage: Scanning Page 10...
+2026-03-19 12:52:58 [INFO] utils.locator_utility: Visual checkpoint captured for 'Results Area P10': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125257913893.png
+2026-03-19 12:52:58 [INFO] utils.locator_utility: SUCCESS: Found 'Results Area P10' (Attempt 1/3)
+2026-03-19 12:52:59 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Cards on Page 10': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125259102684.png
+2026-03-19 12:52:59 [INFO] utils.locator_utility: SUCCESS: Found 'Item Cards on Page 10' (Attempt 1/1)
+2026-03-19 12:52:59 [INFO] SearchResultsPage: Found 1 potential cards on page 10.
+2026-03-19 12:53:00 [INFO] utils.locator_utility: Visual checkpoint captured for 'Item Card 1 on Page 10': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125259866063.png
+2026-03-19 12:53:00 [INFO] utils.locator_utility: Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125300654631.png
+2026-03-19 12:53:01 [INFO] utils.locator_utility: Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125301601055.png
+2026-03-19 12:53:02 [INFO] utils.locator_utility: SUCCESS: Found 'Next Page' (Attempt 1/4)
+2026-03-19 12:53:02 [INFO] utils.locator_utility: Clicked 'Next Page'
+------------------------------ Captured log call ------------------------------
+[32mINFO    [0m tests.test_ecommerce:test_ecommerce.py:79 Starting Scenario: Nike Shoes Search
+[32mINFO    [0m HomePage:base_page.py:20 Navigating to https://www.ebay.com
+[32mINFO    [0m HomePage:home_page.py:13 Searching for product: nike shoes
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Search Input': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125131676232.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Search Input' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:167 Filled 'Search Input' with value: nike shoes
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Search Button': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125133049766.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Search Button' (Attempt 1/4)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:151 Clicked 'Search Button'
+[32mINFO    [0m SearchResultsPage:search_results_page.py:117 Searching for 'nike shoes' under ILS 220.0 (Limit: 1)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Buy It Now Filter': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125137545442.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Buy It Now Filter' (Attempt 1/3)
+[33mWARNING [0m utils.locator_utility:locator_utility.py:147 Initial click failed or intercepted for 'Buy It Now Filter': Locator.click: Timeout 1000ms exceeded.
+Call log:
+  - waiting for locator("a[href*='LH_BIN=1']").first
+    - locator resolved to <a _sp="p2351460.m4118.c1" class="rbx x-refine__single-select-link" href="https://www.ebay.com/sch/i.html?_nkw=nike+shoes&_sacat=0&_from=R40&rt=nc&LH_BIN=1" data-s-ztkj833="{"eventFamily":"LST","eventAction":"ACTN","actionKind":"NAVSRC","actionKinds":["NAVSRC"],"operationId":"2351460","flushImmediately":false,"eventProperty":{"moduledtl":"mi%3A4118%7Ciid%3A1%7Cselected%3A0%7Cglobal%3A1%7CaspectURLParam%3ALH_BIN%7Cli%3A8173%7Cluid%3A191%7C","pageci":"994c17b8-2381-11f1-a805-c6cd1ec5343e","parentrqà>à</a>
+  - attempting click action
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - performing click action
+. Attempting recovery/forced click.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Buy It Now Filter': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125142300093.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Buy It Now Filter' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:151 Clicked 'Buy It Now Filter'
+[33mWARNING [0m utils.locator_utility:locator_utility.py:131 ATTEMPT 1/8 FAILED for 'Max Price Filter' using: input[aria-label*='Maximum Value']
+[33mWARNING [0m utils.locator_utility:locator_utility.py:131 ATTEMPT 2/8 FAILED for 'Max Price Filter' using: input[placeholder*='max']
+[33mWARNING [0m utils.locator_utility:locator_utility.py:131 ATTEMPT 3/8 FAILED for 'Max Price Filter' using: .x-search-field__input--max
+[33mWARNING [0m utils.locator_utility:locator_utility.py:131 ATTEMPT 4/8 FAILED for 'Max Price Filter' using: input[id*='price_max']
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Max Price Filter': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125151953110.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Max Price Filter' (Attempt 5/8)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:160 Performing 8 manual clear actions for 'Max Price Filter'
+[32mINFO    [0m utils.locator_utility:locator_utility.py:167 Filled 'Max Price Filter' with value: 220
+[32mINFO    [0m SearchResultsPage:search_results_page.py:71 Verifying applied filter: 220.0
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Applied Filter Chip': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125154724935.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Applied Filter Chip' (Attempt 1/5)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:135 NOTICE: Optional element 'Filter Chip Price' not detected after all attempts.
+[32mINFO    [0m SearchResultsPage:search_results_page.py:96 Filter verified: 220.0
+[32mINFO    [0m SearchResultsPage:search_results_page.py:138 Scanning Page 1...
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Results Area P1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125156122046.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Results Area P1' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Cards on Page 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125157131969.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Item Cards on Page 1' (Attempt 1/1)
+[32mINFO    [0m SearchResultsPage:search_results_page.py:148 Found 1 potential cards on page 1.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Card 1 on Page 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125157926324.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125158664867.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125159612624.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Next Page' (Attempt 1/4)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:151 Clicked 'Next Page'
+[32mINFO    [0m SearchResultsPage:search_results_page.py:138 Scanning Page 2...
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Results Area P2': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125202874079.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Results Area P2' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Cards on Page 2': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125203864002.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Item Cards on Page 2' (Attempt 1/1)
+[32mINFO    [0m SearchResultsPage:search_results_page.py:148 Found 1 potential cards on page 2.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Card 1 on Page 2': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125204606581.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125205349723.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125206219553.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Next Page' (Attempt 1/4)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:151 Clicked 'Next Page'
+[32mINFO    [0m SearchResultsPage:search_results_page.py:138 Scanning Page 3...
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Results Area P3': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125209731036.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Results Area P3' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Cards on Page 3': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125210685498.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Item Cards on Page 3' (Attempt 1/1)
+[32mINFO    [0m SearchResultsPage:search_results_page.py:148 Found 1 potential cards on page 3.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Card 1 on Page 3': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125211427259.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125212206960.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125213107113.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Next Page' (Attempt 1/4)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:151 Clicked 'Next Page'
+[32mINFO    [0m SearchResultsPage:search_results_page.py:138 Scanning Page 4...
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Results Area P4': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125216258381.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Results Area P4' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Cards on Page 4': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125217286620.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Item Cards on Page 4' (Attempt 1/1)
+[32mINFO    [0m SearchResultsPage:search_results_page.py:148 Found 1 potential cards on page 4.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Card 1 on Page 4': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125218100740.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125218827932.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125219688062.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Next Page' (Attempt 1/4)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:151 Clicked 'Next Page'
+[32mINFO    [0m SearchResultsPage:search_results_page.py:138 Scanning Page 5...
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Results Area P5': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125223206380.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Results Area P5' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Cards on Page 5': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125224145431.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Item Cards on Page 5' (Attempt 1/1)
+[32mINFO    [0m SearchResultsPage:search_results_page.py:148 Found 1 potential cards on page 5.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Card 1 on Page 5': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125224888647.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125225639813.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125226512353.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Next Page' (Attempt 1/4)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:151 Clicked 'Next Page'
+[32mINFO    [0m SearchResultsPage:search_results_page.py:138 Scanning Page 6...
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Results Area P6': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125229950881.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Results Area P6' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Cards on Page 6': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125231083803.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Item Cards on Page 6' (Attempt 1/1)
+[32mINFO    [0m SearchResultsPage:search_results_page.py:148 Found 1 potential cards on page 6.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Card 1 on Page 6': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125231926367.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125232743263.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125233621703.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Next Page' (Attempt 1/4)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:151 Clicked 'Next Page'
+[32mINFO    [0m SearchResultsPage:search_results_page.py:138 Scanning Page 7...
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Results Area P7': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125237270551.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Results Area P7' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Cards on Page 7': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125238413754.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Item Cards on Page 7' (Attempt 1/1)
+[32mINFO    [0m SearchResultsPage:search_results_page.py:148 Found 1 potential cards on page 7.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Card 1 on Page 7': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125239151466.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125239909173.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125240764784.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Next Page' (Attempt 1/4)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:151 Clicked 'Next Page'
+[32mINFO    [0m SearchResultsPage:search_results_page.py:138 Scanning Page 8...
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Results Area P8': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125244189968.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Results Area P8' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Cards on Page 8': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125245352385.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Item Cards on Page 8' (Attempt 1/1)
+[32mINFO    [0m SearchResultsPage:search_results_page.py:148 Found 1 potential cards on page 8.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Card 1 on Page 8': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125246117148.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125246844149.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125247695281.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Next Page' (Attempt 1/4)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:151 Clicked 'Next Page'
+[32mINFO    [0m SearchResultsPage:search_results_page.py:138 Scanning Page 9...
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Results Area P9': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125250986421.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Results Area P9' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Cards on Page 9': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125252286902.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Item Cards on Page 9' (Attempt 1/1)
+[32mINFO    [0m SearchResultsPage:search_results_page.py:148 Found 1 potential cards on page 9.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Card 1 on Page 9': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125253034011.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125253762642.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125254763515.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Next Page' (Attempt 1/4)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:151 Clicked 'Next Page'
+[32mINFO    [0m SearchResultsPage:search_results_page.py:138 Scanning Page 10...
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Results Area P10': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125257913893.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Results Area P10' (Attempt 1/3)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Cards on Page 10': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125259102684.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Item Cards on Page 10' (Attempt 1/1)
+[32mINFO    [0m SearchResultsPage:search_results_page.py:148 Found 1 potential cards on page 10.
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Item Card 1 on Page 10': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125259866063.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Title 1': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125300654631.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:77 Visual checkpoint captured for 'Next Page': results\chrome_latest-Nike_Shoes_Search\screenshots\20260319125301601055.png
+[32mINFO    [0m utils.locator_utility:locator_utility.py:125 SUCCESS: Found 'Next Page' (Attempt 1/4)
+[32mINFO    [0m utils.locator_utility:locator_utility.py:151 Clicked 'Next Page'
+- Generated html report: file:///D:/repos/ecommerce_automation/results/report.html -
+=========================== short test summary info ===========================
+FAILED tests/test_ecommerce.py::TestECommerceWorkflow::test_ebay_budget_flow[chrome_latest-Nike_Shoes_Search]
+======================== 1 failed in 100.10s (0:01:40) ========================

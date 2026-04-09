@@ -1,5 +1,6 @@
 import pytest
 import logging
+import allure
 from typing import List
 from pages.home_page import HomePage
 from pages.search_results_page import SearchResultsPage
@@ -12,11 +13,13 @@ logger = logging.getLogger(__name__)
 # Load scenarios once for parametrization
 scenarios = DataReader.read_json("test_data.json")
 
+@allure.feature("eBay eCommerce Flows")
 class TestECommerceWorkflow:
     """
     Enterprise-grade test suite for eBay eCommerce flows.
     """
 
+    @allure.step("Discovery Phase: Search and apply price filters")
     async def _search_and_filter_items(self, page, data) -> List[str]:
         """Orchestrates searching and applying price filters."""
         home = HomePage(page)
@@ -33,42 +36,9 @@ class TestECommerceWorkflow:
         )
         return urls
 
-    async def add_items_to_cart(self, page, urls: List[str]) -> None:
-        """
-        Orchestrates adding items to cart sequentially in the same tab.
-        This ensures session/cookie persistence for guest users.
-        """
-        for url in urls:
-            clean_url = url.split('?')[0]
-            logger.info(f"Opening item page: {clean_url}")
-            
-            try:
-                # 1. Navigate to the item page in the SAME tab
-                # This ensures cookies/session storage are updated correctly on a single thread
-                await page.goto(clean_url, wait_until="load")
-                
-                # 2. Interact with Product Page
-                product_page = ProductPage(page)
-                # add_to_cart handles variant selection and clicking
-                if not await product_page.add_to_cart():
-                    raise Exception(f"Failed to confirm item was added to cart: {clean_url}")
-                
-                # 3. Synchronize Session: Wait for network to stabilize 
-                # to ensure cookies/session-storage are flushed to disk
-                try:
-                    await page.wait_for_load_state("networkidle", timeout=10000)
-                except Exception:
-                    logger.debug("Network did not reach idle state, continuing anyway.")
-                await page.wait_for_timeout(2000) 
-                
-                # 4. Informational log
-                logger.info(f"Successfully added to cart and synced session for: {clean_url}")
-                
-            except Exception as e:
-                logger.error(f"Failed to process item {clean_url}: {e}")
-                continue
-
     @pytest.mark.asyncio
+    @allure.story("Budget-Based Shopping Flow")
+    @allure.description("Verifies that a guest user can search for items within a budget and add them to the cart.")
     async def test_ebay_budget_flow(self, page_context, browser_config, scenario):
         """
         Scenario: Search for items within a budget, add to cart, and verify total.
@@ -76,15 +46,17 @@ class TestECommerceWorkflow:
         2. Add products to cart.
         3. Verify total subtotal aligns with budget.
         """
+        allure.dynamic.title(f"Scenario: {scenario['test_name']}")
         logger.info(f"Starting Scenario: {scenario['test_name']}")
         
-        # 1. Discovery Phase
-        urls = await self._search_and_filter_items(page_context, scenario)
-        assert urls, f"No products found for '{scenario['search_query']}' within the specified price range."
+        with allure.step("Step 1: Discover products based on search and budget"):
+            urls = await self._search_and_filter_items(page_context, scenario)
+            assert urls, f"No products found for '{scenario['search_query']}' within the specified price range."
         
-        # 2. Execution Phase
-        await self.add_items_to_cart(page_context, urls)
+        with allure.step("Step 2: Add discovered products to the shopping cart"):
+            product_page = ProductPage(page_context)
+            await product_page.add_items_to_cart(urls)
         
-        # 3. Verification Phase
-        cart = CartPage(page_context)
-        await cart.assertCartTotalNotExceeds(scenario["budget_per_item"], scenario["item_limit"])
+        with allure.step("Step 3: Verify cart constraints (Item count & Total price)"):
+            cart = CartPage(page_context)
+            await cart.verify_cart_constraints(scenario["budget_per_item"], scenario["item_limit"])

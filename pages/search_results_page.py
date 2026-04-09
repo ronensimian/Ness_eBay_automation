@@ -1,5 +1,6 @@
 import logging
 import re
+import allure
 from playwright.async_api import expect
 from pages.base_page import BasePage
 
@@ -23,21 +24,25 @@ class SearchResultsPage(BasePage):
         "div.x-price-range__input input >> nth=1"
     ]    
     RESULT_ITEMS = [
+        "li.s-card",
+        ".s-card.s-card--vertical",
         ".srp-results .s-item",
         ".srp-river-results .s-item",
         ".s-item",
         ".srp-results .s-card",
         ".srp-river-results .s-card",
+        "//li[contains(@class, 's-item') or contains(@class, 's-card')]",
         "//div[contains(@class, 's-item') or contains(@class, 's-card')]"
     ]    
     ITEM_LINK = [
+        "a.s-card__link",
         ".s-item__link",
         ".s-card__link",
         ".su-card-link",
         "//a[contains(@class, 'link') and (contains(@href, '/itm/') or contains(@href, 'ebay.com/itm'))]"
     ]
     ITEM_PRICE = [
-        ".su-styled-text.primary.bold.large-1.s-card__price",
+        "span.su-styled-text.primary.bold.large-1.s-card__price",
         ".s-card__price",
         ".s-item__price",
         ".s-card__attribute-row",
@@ -61,7 +66,20 @@ class SearchResultsPage(BasePage):
         ".srp-carousel-list__item--applied",
         "//li[contains(@class, 'applied')]"
     ]
+    TITLE_SELECTORS = [
+        "div.s-card__title",
+        ".s-card__title",
+        ".s-item__title",
+        "[role='heading']"
+    ]
+    PRICE_SELECTORS = [
+        ".s-card__price",
+        ".s-item__price",
+        "span[class*='s-card__price']"
+    ]
 
+
+    @allure.step("Verify that the applied price filter is Under ILS {expected_price}")
     async def verify_applied_price_filter(self, expected_price: float):
         """Passive verification of the applied filter chip."""
         self.logger.info(f"Verifying applied filter: {expected_price}")
@@ -104,6 +122,7 @@ class SearchResultsPage(BasePage):
         await self.page.wait_for_timeout(2000) # Allow page to settle after filter application
         await self.wait_for_ready()
 
+    @allure.step("Find items under price: ILS {max_price}")
     async def search_items_by_name_under_price(self, query: str, max_price: float, limit: int = 5) -> list[str]:
         """
         1. Performs search (via HomePage wrapper if needed, but usually this is called on the results context)
@@ -127,8 +146,8 @@ class SearchResultsPage(BasePage):
         page_num = 1
         seen_urls = set()
         
-        # Ultra-robust XPath targetting items across list, grid, and river views
-        XPATH_ITEMS = "//*[contains(@class, 's-item__wrapper') or contains(@class, 's-card')]//ancestor::li[contains(@class, 's-item') or contains(@class, 's-card')] | //div[contains(@class, 's-item__wrapper')]"
+        # Ultra-robust XPath targetting only top-level items across list, grid, and river views
+        XPATH_ITEMS = "//li[(contains(@class, 's-item') or contains(@class, 's-card')) and not(ancestor::li)] | //div[(contains(@class, 's-item__wrapper') or contains(@class, 's-card')) and not(ancestor::div[contains(@class, 's-card')])]"
         
         while len(qualified_urls) < limit and page_num <= 10:
             self.logger.info(f"Scanning Page {page_num}...")
@@ -139,29 +158,30 @@ class SearchResultsPage(BasePage):
                 break
 
             # Locate actual cards
-            card_locator = await self.ui.find_element(XPATH_ITEMS, f"Item Card {i+1} on Page {page_num}", timeout=1000)
-            total_matches = await card_locator.count()
-            self.logger.info(f"Found {total_matches} potential cards on page {page_num}.")
+            # We use a limit to avoid scanning hundreds of items and timing out
+            cards = await self.page.locator(XPATH_ITEMS).all()
+            total_matches = len(cards)
+            self.logger.info(f"Found {total_matches} potential cards. Scanning first 50...")
             
-            for i in range(total_matches):
+            for i, indexed_card in enumerate(cards[:50]): # Scan max 50 per page to save time
                 if len(qualified_urls) >= limit: break
                 
                 try:
-                    # 1. Capture the Item Card element
-                    indexed_card = await self.ui.find_element(card_locator.nth(i), f"Item Card {i+1} on Page {page_num}", timeout=1000)
                     if not await indexed_card.is_visible():
                         continue
                         
                     # 2. Extract Title
-                    title_selector = ".s-card__title, .s-item__title, [role='heading']"
-                    title_el = await self.ui.find_element(indexed_card.locator(title_selector).first, f"Title {i+1}")
+                    title_el = indexed_card.locator(", ".join(self.TITLE_SELECTORS)).first
+                    if not await title_el.is_visible(timeout=300):
+                        continue
                     title_text = await title_el.inner_text()
-                    if not (title_text.strip() and "Shop on eBay" not in title_text and len(title_text) >= 5):
+                    if "Shop on eBay" in title_text or len(title_text) < 5:
                         continue
                         
                     # 3. Extract Price
-                    price_selector = ".s-card__price, .su-styled-text.primary.bold.large-1, .s-item__price, [class*='price']"
-                    price_el = await self.ui.find_element(indexed_card.locator(price_selector).first, f"Price {i+1}", timeout=1000)
+                    price_el = indexed_card.locator(", ".join(self.PRICE_SELECTORS)).first
+                    if not await price_el.is_visible(timeout=300):
+                        continue
                     price_text = await price_el.inner_text()
                     matches = re.findall(r'[\d.]+', price_text.replace(',', ''))
                     current_price = max([float(m) for m in matches]) if matches else None
@@ -169,8 +189,7 @@ class SearchResultsPage(BasePage):
                         continue
                         
                     # 4. Extract URL
-                    link_selector = ".s-item__link, .s-card__link, a[href*='/itm/']"
-                    link_el = await self.ui.find_element(indexed_card.locator(link_selector).first, f"Link {i+1}")
+                    link_el = indexed_card.locator("a.s-card__link, .s-item__link, a[href*='/itm/']").first
                     url = await link_el.get_attribute("href")
                     
                     if url and "/itm/" in url and url not in seen_urls:

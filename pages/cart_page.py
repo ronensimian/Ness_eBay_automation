@@ -1,5 +1,6 @@
 import re
 import logging
+import allure
 from pages.base_page import BasePage
 
 logger = logging.getLogger(__name__)
@@ -17,22 +18,40 @@ class CartPage(BasePage):
     ]
 
     CART_ITEM_COUNT = [
-        "div[data-test-id='cart-summary'] .cart-summary-line-item:first-child .text-display-span"
+        # Primary: Order Summary panel — matches "Item(1)" or "Items(3)"
+        "div[data-test-id='cart-summary'] .cart-summary-line-item:first-child",
+        # Fallback: any span whose text starts with "Item"
+        "div[data-test-id='ITEM_TOTAL']",
+        "//div[@data-test-id='cart-summary']//span[starts-with(normalize-space(.), 'Item')]",
+        # Last resort: cart icon badge in the header
+        "#gh-cart-n",
+        ".gh-cart-n"
     ]
 
     async def get_item_count(self) -> int:
-        """Extracts the number of items currently in the cart."""
+        """Extracts the number of items from the Order Summary panel.
+        Handles formats: 'Item (1)', 'Items (3)'
+        """
         try:
-            locator = await self.ui.find_element(self.CART_ITEM_COUNT, "Cart Item Count", timeout=3000, is_optional=True)
+            locator = await self.ui.find_element(
+                self.CART_ITEM_COUNT, "Cart Item Count", timeout=5000, is_optional=True
+            )
             text = await locator.inner_text()
-            # Look for digits in text like "Cart (3 items)" or "3 items"
+            self.logger.info(f"Cart count raw text: '{text}'")
+            # Match number inside parentheses: "Item (1)" -> 1, "Items (3)" -> 3
+            match = re.search(r'Items?\s*\((\d+)\)', text, re.IGNORECASE)
+            if match:
+                count = int(match.group(1))
+                self.logger.info(f"Detected {count} item(s) in cart from Order Summary.")
+                return count
+            # Fallback: any standalone number (e.g. header badge "3")
             match = re.search(r'(\d+)', text)
             if match:
                 count = int(match.group(1))
-                self.logger.info(f"Detected {count} items in cart via header.")
+                self.logger.info(f"Detected {count} item(s) in cart via fallback number.")
                 return count
-        except Exception:
-            self.logger.warning("Could not clearly detect item count in cart header.")
+        except Exception as e:
+            self.logger.warning(f"Could not detect item count in cart: {e}")
         return 0
 
     async def get_cart_total(self) -> float:
@@ -50,19 +69,20 @@ class CartPage(BasePage):
         self.logger.info(f"Extracted cart total: {total_val}")
         return total_val
 
-    async def assertCartTotalNotExceeds(self, budget_per_item: float, items_count: int) -> None:
+    @allure.step("Final Verification: Check if cart has {items_count} items and total is within budget")
+    async def verify_cart_constraints(self, budget_per_item: float, items_count: int) -> None:
         """
-        Verifies the shopping cart amount and item count.
+        Verifies the shopping cart amount and exact item count.
         """
         # 1. Open the shopping cart
         await self.navigate("https://cart.ebay.com")
         await self.wait_for_ready()
 
-        # 2. Verify item count
+        # 2. Verify exact item count
         actual_count = await self.get_item_count()
-        if actual_count > 0 and actual_count != items_count:
+        if actual_count != items_count:
             self.logger.error(f"ITEM COUNT MISMATCH: Expected {items_count}, but found {actual_count}")
-            # We don't raise yet, as subtotal check is primary, but we log it heavily.
+            raise AssertionError(f"EXACT ITEM COUNT MISMATCH: Expected precisely {items_count} items, but found {actual_count} in the cart.")
         
         # 3. Read the total amount
         total = await self.get_cart_total()
@@ -72,15 +92,8 @@ class CartPage(BasePage):
         
         self.logger.info(f"Cart Verification: Total={total}, Threshold={threshold} ({items_count} items * ILS {budget_per_item})")
         
-        # 5. Verify total and count
-        # If count detection failed (actual_count=0) but we have a total, we still check the count if it was found
-        if items_count > 0 and actual_count == 0 and total == 0:
-             raise AssertionError(f"Cart appears EMPTY! Expected {items_count} items.")
-             
-        if actual_count > 0 and actual_count != items_count:
-             raise AssertionError(f"ITEM COUNT MISMATCH: Expected {items_count}, but found {actual_count}")
-             
+        # 5. Verify total
         if total > threshold:
             raise AssertionError(f"Cart total {total} exceeds the calculated threshold of {threshold}")
             
-        self.logger.info("Verification Success: Cart matches expected criteria.")
+        self.logger.info("Verification Success: Cart matches expected constraints.")

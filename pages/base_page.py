@@ -1,19 +1,29 @@
 import logging
+import allure
 from typing import Optional
 from playwright.async_api import Page
 from utils.locator_utility import UIActionHandler
 
 class BasePage:
-    """Base class for all Page Objects in the Enterprise Framework."""
+    """Consolidates common eBay components (Header/Footer) and actions."""
     
-    # Global locators
-    LOGO = ["#gh-logo", "//svg[@id='gh-logo']"]
-    GLOBAL_SEARCH = ["#gh-ac", "input[name='_nkw']", "//input[@id='gh-ac']"]
+    # Common Header Selectors
+    SEARCH_INPUT = ["#gh-ac", "input[name='_nkw']", "//input[@type='text']"]
+    SEARCH_BUTTON = ["#gh-search-btn", "button#gh-search-btn", "input#gh-search-btn"]
+    CART_ICON = [".gh-cart", "a.gh-flyout__target[href*='cart.ebay.com']"]
 
     def __init__(self, page: Page):
         self.page = page
         self.ui = UIActionHandler(page)
         self.logger = logging.getLogger(self.__class__.__name__)
+
+    @allure.step("Global Search for product: {query}")
+    async def search_for_product(self, query: str):
+        """Executes a search from any page via the universal eBay header."""
+        self.logger.info(f"Global Header Search: {query}")
+        await self.ui.fill(self.SEARCH_INPUT, query, "Search Input")
+        await self.ui.click(self.SEARCH_BUTTON, "Search Button")
+        await self.wait_for_ready()
 
     async def navigate(self, url: str):
         """Navigates to a specific URL with human-like timing and blocker checks."""
